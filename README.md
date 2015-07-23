@@ -1,6 +1,6 @@
 # IAPController
 
-[![](https://img.shields.io/cocoapods/v/IAPController.svg?style=flat-square)](https://cocoapods.org/pods/MEViewExtensions)
+[![](https://img.shields.io/cocoapods/v/IAPController.svg?style=flat-square)](https://cocoapods.org/pods/IAPController)
 ![](https://img.shields.io/cocoapods/p/IAPController.svg?style=flat-square)
 ![](https://img.shields.io/cocoapods/l/IAPController.svg?style=flat-square)
 
