@@ -9,13 +9,13 @@
 import Foundation
 import StoreKit
 
-extension SKProduct {
+public extension SKProduct {
     
     private var payment: SKPayment {
         get { return SKPayment(product: self) }
     }
     
-    var priceFormatted: String? {
+    public var priceFormatted: String? {
         get {
             var priceFormatter = NSNumberFormatter()
             priceFormatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
@@ -25,7 +25,7 @@ extension SKProduct {
         }
     }
     
-    func buy() {
+    public func buy() {
         if SKPaymentQueue.canMakePayments() {
             SKPaymentQueue.defaultQueue().addPayment(self.payment)
         }

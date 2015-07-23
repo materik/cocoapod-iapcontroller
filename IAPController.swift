@@ -9,28 +9,27 @@
 import Foundation
 import StoreKit
 
-let IAPControllerFetchedNotification = "IAPControllerFetchedNotification"
-let IAPControllerPurchasedNotification = "IAPControllerPurchasedNotification"
-let IAPControllerFailedNotification = "IAPControllerFailedNotification"
-let IAPControllerRestoredNotification = "IAPControllerRestoredNotification"
+public let IAPControllerFetchedNotification = "IAPControllerFetchedNotification"
+public let IAPControllerPurchasedNotification = "IAPControllerPurchasedNotification"
+public let IAPControllerFailedNotification = "IAPControllerFailedNotification"
+public let IAPControllerRestoredNotification = "IAPControllerRestoredNotification"
 
-class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+public class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     // MARK: Properties
     
-    var products: [SKProduct]?
+    public var products: [SKProduct]?
     var productIds:[String] = []
-    var unlocked: Bool = false
     
     // MARK: Singleton
     
-    static var sharedInstance: IAPController = {
+    public static var sharedInstance: IAPController = {
         return IAPController()
     }()
     
     // MARK: Init
     
-    override init() {
+    public override init() {
         super.init()
         self.retrieveProductIdsFromPlist()
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
@@ -43,24 +42,24 @@ class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransactionOb
     
     // MARK: Action
     
-    func fetch() {
+    public func fetchProducts() {
         let request = SKProductsRequest(productIdentifiers: Set(self.productIds))
         request.delegate = self
         request.start()
     }
     
-    func restore() {
+    public func restore() {
         SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
     }
     
     // MARK: SKPaymentTransactionObserver
 
-    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
+    public func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
         self.products = response.products as? [SKProduct]
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerFetchedNotification, object: nil)
     }
     
-    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
+    public func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
         for transaction in transactions {
             if let transaction = transaction as? SKPaymentTransaction {
                 switch transaction.transactionState {
@@ -80,11 +79,11 @@ class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransactionOb
         }
     }
     
-    func paymentQueue(queue: SKPaymentQueue!, restoreCompletedTransactionsFailedWithError error: NSError!) {
+    public func paymentQueue(queue: SKPaymentQueue!, restoreCompletedTransactionsFailedWithError error: NSError!) {
         self.failedTransaction(transaction: nil, error: error)
     }
     
-    func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue!) {
+    public func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue!) {
         self.restoreTransaction()
     }
     
@@ -97,10 +96,8 @@ class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransactionOb
     }
     
     func restoreTransaction(transaction: SKPaymentTransaction? = nil) {
-        self.unlocked = true
         self.finishTransaction(transaction: transaction)
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerRestoredNotification, object: nil)
-        AppTracker.sharedInstance.inAppPurchaseRestored()
     }
     
     func failedTransaction(transaction: SKPaymentTransaction? = nil, error: NSError? = nil) {
@@ -109,16 +106,11 @@ class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransactionOb
             let err = error ?? transaction?.error
             NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerFailedNotification, object: err)
         }
-        AppTracker.sharedInstance.inAppPurchaseFailed(error)
     }
     
     func purchasedTransaction(transaction: SKPaymentTransaction? = nil) {
-        self.unlocked = true
         self.finishTransaction(transaction: transaction)
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerPurchasedNotification, object: nil)
-        if let productId = transaction?.payment.productIdentifier {
-            AppTracker.sharedInstance.inAppPurchasePurchased(productId)
-        }
     }
     
 }

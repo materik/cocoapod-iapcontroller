@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name           = "IAPController"
-  s.version        = "0.2.0"
+  s.version        = "0.1.0"
   s.summary        = "In App Purchase controller for Swift"
   s.homepage       = "https://github.com/materik/IAPController.git"
   s.license        = { :type => "MIT", :file => "LICENSE.md" }
