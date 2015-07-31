@@ -84,7 +84,7 @@ public class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransa
     }
     
     public func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue!) {
-        self.restoreTransaction()
+        NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerRestoredNotification, object: nil)
     }
     
     // MARK: Transaction
@@ -97,7 +97,7 @@ public class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransa
     
     func restoreTransaction(transaction: SKPaymentTransaction? = nil) {
         self.finishTransaction(transaction: transaction)
-        NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerRestoredNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerPurchasedNotification, object: nil)
     }
     
     func failedTransaction(transaction: SKPaymentTransaction? = nil, error: NSError? = nil) {
