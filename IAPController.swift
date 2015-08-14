@@ -54,61 +54,60 @@ public class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransa
     
     // MARK: SKPaymentTransactionObserver
 
-    public func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
-        self.products = response.products as? [SKProduct]
+    public func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        self.products = response.products
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerFetchedNotification, object: nil)
     }
     
-    public func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
+    public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
-            if let transaction = transaction as? SKPaymentTransaction {
-                switch transaction.transactionState {
-                case .Purchased:
-                    self.purchasedTransaction(transaction: transaction)
-                    break
-                case .Failed:
-                    self.failedTransaction(transaction: transaction)
-                    break
-                case .Restored:
-                    self.restoreTransaction(transaction: transaction)
-                    break
-                default:
-                    break
-                }
+            switch transaction.transactionState {
+            case .Purchased:
+                self.purchasedTransaction(transaction: transaction)
+                break
+            case .Failed:
+                self.failedTransaction(transaction: transaction)
+                break
+            case .Restored:
+                self.restoreTransaction(transaction: transaction)
+                break
+            default:
+                break
             }
         }
     }
     
-    public func paymentQueue(queue: SKPaymentQueue!, restoreCompletedTransactionsFailedWithError error: NSError!) {
+    public func paymentQueue(queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: NSError) {
         self.failedTransaction(transaction: nil, error: error)
     }
     
-    public func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue!) {
+    public func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue) {
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerRestoredNotification, object: nil)
     }
     
     // MARK: Transaction
     
-    func finishTransaction(transaction: SKPaymentTransaction? = nil) {
+    func finishTransaction(transaction transaction: SKPaymentTransaction? = nil) {
         if let transaction = transaction {
             SKPaymentQueue.defaultQueue().finishTransaction(transaction)
         }
     }
     
-    func restoreTransaction(transaction: SKPaymentTransaction? = nil) {
+    func restoreTransaction(transaction transaction: SKPaymentTransaction? = nil) {
         self.finishTransaction(transaction: transaction)
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerPurchasedNotification, object: nil)
     }
     
-    func failedTransaction(transaction: SKPaymentTransaction? = nil, error: NSError? = nil) {
+    func failedTransaction(transaction transaction: SKPaymentTransaction? = nil, error: NSError? = nil) {
         self.finishTransaction(transaction: transaction)
-        if transaction == nil || transaction!.error.code != SKErrorPaymentCancelled {
-            let err = error ?? transaction?.error
-            NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerFailedNotification, object: err)
+        if let error = error ?? transaction?.error {
+            if error != SKErrorPaymentCancelled {
+                NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerFailedNotification, object: error)
+            }
         }
     }
     
-    func purchasedTransaction(transaction: SKPaymentTransaction? = nil) {
+    func purchasedTransaction(transaction transaction: SKPaymentTransaction? = nil) {
         self.finishTransaction(transaction: transaction)
         NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerPurchasedNotification, object: nil)
     }

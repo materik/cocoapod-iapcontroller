@@ -17,7 +17,7 @@ public extension SKProduct {
     
     public var priceFormatted: String? {
         get {
-            var priceFormatter = NSNumberFormatter()
+            let priceFormatter = NSNumberFormatter()
             priceFormatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
             priceFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
             priceFormatter.locale = self.priceLocale
