@@ -1,4 +1,4 @@
-# IAPController
+![](logo.png)
 
 [![](https://img.shields.io/cocoapods/v/IAPController.svg?style=flat-square)](https://cocoapods.org/pods/IAPController)
 ![](https://img.shields.io/cocoapods/p/IAPController.svg?style=flat-square)
