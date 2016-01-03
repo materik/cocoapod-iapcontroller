@@ -4,7 +4,7 @@
 ![](https://img.shields.io/cocoapods/p/IAPController.svg?style=flat-square)
 ![](https://img.shields.io/cocoapods/l/IAPController.svg?style=flat-square)
 
-In App Purchase controller for Swift
+In App Purchase controller
 
 # Install
 
@@ -18,7 +18,15 @@ pod 'IAPController'
 pod 'IAPController/Swift'
 ```
 
+## Objective-C
+
+```
+pod 'IAPController/ObjC'
+```
+
 # Usage
+
+## Swift
 
 Create a plist-file named `IAPControllerProductIds.plist` that contains the identifiers of your in-app purchases:
 
