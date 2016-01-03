@@ -7,12 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import <IAPController.h>
+#import <IAPController/IAPController.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+  [[IAPController sharedInstance] fetchProducts];
+  [[IAPController sharedInstance].products.firstObject buy];
 
   return YES;
 }

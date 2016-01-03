@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C12DC8401C38B689003B6EA2 /* IAPControllerProductIds.plist in Resources */ = {isa = PBXBuildFile; fileRef = C12DC83F1C38B689003B6EA2 /* IAPControllerProductIds.plist */; };
 		C1FE6A1F1C38ADCD00F8A315 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE6A1E1C38ADCD00F8A315 /* main.m */; };
 		C1FE6A221C38ADCD00F8A315 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE6A211C38ADCD00F8A315 /* AppDelegate.m */; };
 		EC6BE1C9F63D4581F423C88D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F641BC9C9C4E20C65F067BF /* Pods.framework */; };
@@ -16,6 +17,7 @@
 		1F641BC9C9C4E20C65F067BF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2607AE78E00BD492EEA1AC2E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F49DE4D121BF6099D8EF179 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C12DC83F1C38B689003B6EA2 /* IAPControllerProductIds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IAPControllerProductIds.plist; sourceTree = "<group>"; };
 		C1FE6A1A1C38ADCD00F8A315 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FE6A1E1C38ADCD00F8A315 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C1FE6A201C38ADCD00F8A315 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FE6A2E1C38ADCD00F8A315 /* Info.plist */,
+				C12DC83F1C38B689003B6EA2 /* IAPControllerProductIds.plist */,
 				C1FE6A1E1C38ADCD00F8A315 /* main.m */,
 			);
 			path = "Supporting Files";
@@ -148,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12DC8401C38B689003B6EA2 /* IAPControllerProductIds.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
