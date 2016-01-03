@@ -35,10 +35,8 @@ Create a plist-file named `IAPControllerProductIds.plist` that contains the iden
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-  <string>BundleIdentifier.IAP1</string>
-  <string>BundleIdentifier.IAP2</string>
-  <string>BundleIdentifier.IAP3</string>
-  <string>BundleIdentifier.IAP4</string>
+  <string>com.thematerik.IAPController.product1</string>
+  <string>com.thematerik.IAPController.product2</string>
 </array>
 </plist>
 ```
