@@ -19,7 +19,7 @@ public class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransa
     // MARK: Properties
     
     public var products: [SKProduct]?
-    var productIds:[String] = []
+    var productIds: [String] = []
     
     // MARK: Singleton
     
@@ -101,7 +101,7 @@ public class IAPController: NSObject, SKProductsRequestDelegate, SKPaymentTransa
     func failedTransaction(transaction transaction: SKPaymentTransaction? = nil, error: NSError? = nil) {
         self.finishTransaction(transaction: transaction)
         if let error = error ?? transaction?.error {
-            if error != SKErrorPaymentCancelled {
+            if error.code != SKErrorPaymentCancelled {
                 NSNotificationCenter.defaultCenter().postNotificationName(IAPControllerFailedNotification, object: error)
             }
         }
