@@ -8,17 +8,20 @@ In App Purchase controller for Swift
 
 # Install
 
-Install it with Cocoapods :
 ```
 pod 'IAPController'
 ```
 
-If you're using Swift 2 with Xcode 7, consider to use version 0.2.0 instead
+## Swift (Default)
+
 ```
-pod 'IAPController', :git => "https://github.com/materik/IAPController.git", :tag => "0.2.0"
+pod 'IAPController/Swift'
 ```
+
 # Usage
-Create a plist file named `IAPControllerProductIds.plist` that will contain the identifiers of your in-app purchases :
+
+Create a plist-file named `IAPControllerProductIds.plist` that contains the identifiers of your in-app purchases:
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -32,32 +35,32 @@ Create a plist file named `IAPControllerProductIds.plist` that will contain the 
 </plist>
 ```
 
-You should start by fetching products on the store :
+Fetch the products in the `didFinishLaunchingWithOptions` method in your `AppDelegate`:
+
 ```
 IAPController.sharedInstance.fetchProducts()
 ```
 
-Use observers to responds to the IAP NSNotificationCenter events :
-* `IAPControllerFetchedNotification` : when the products have been fetched from the store. (You should reload your view controller with price and IAP informations)
-* `IAPControllerPurchasedNotification` : when a product have been purchased (you should give the user what he purchased here)
-* `IAPControllerFailedNotification` : when a transaction could not be finished
-* `IAPControllerRestoredNotification` : when the user restored his in-app purchases
+Use observers to listen to in-app purchases events:
 
-# SKProduct extensions
-You can call on any SKProduct some new helper functions :
+* `IAPControllerFetchedNotification`: when the products have been fetched from the store
+* `IAPControllerPurchasedNotification`: when a product have been purchased
+* `IAPControllerFailedNotification`: when a transaction could not be finished
+* `IAPControllerRestoredNotification`: when the user restored his in-app purchases
+
+`SKProduct` have been given some useful helper methods, example:
+
 ```
-let product = IAPController.sharedInstance.products!.first!
-
-// Printing the price of the product
-print(product.priceFormatted)
-
-// Buying the product
-product.buy()
+if let product = IAPController.sharedInstance.products?.first {
+    // Printing the price of the product
+    print(product.priceFormatted)
+    // Buying the product
+    product.buy()
+}
 ```
 
-The buy should be treated in a function called by an observer on IAPControllerPurchasedNotification
+Restore purchases by calling:
 
-# Restoring purchases
 ```
 IAPController.sharedInstance.restore()
 ```
