@@ -14,7 +14,7 @@
 
 /* Begin PBXFileReference section */
 		537A77345AE1589C6BEF8FFB /* Pods-IAPController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IAPController.release.xcconfig"; path = "Pods/Target Support Files/Pods-IAPController/Pods-IAPController.release.xcconfig"; sourceTree = "<group>"; };
-		C161F7EB1B617DF20064821F /* IAPControllerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAPControllerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C161F7EB1B617DF20064821F /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C161F7EF1B617DF20064821F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C161F7F01B617DF20064821F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C161F8101B617F1B0064821F /* IAPControllerProductIds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IAPControllerProductIds.plist; sourceTree = "<group>"; };
@@ -54,28 +54,28 @@
 		C161F7E21B617DF20064821F = {
 			isa = PBXGroup;
 			children = (
-				C161F7ED1B617DF20064821F /* IAPControllerTest */,
-				C161F7EC1B617DF20064821F /* Products */,
-				3B9578821148C8D9EF948F39 /* Pods */,
+				C161F7ED1B617DF20064821F /* Classes */,
 				3C9F6D7B1752C073E6A49A13 /* Frameworks */,
+				3B9578821148C8D9EF948F39 /* Pods */,
+				C161F7EC1B617DF20064821F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 		C161F7EC1B617DF20064821F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C161F7EB1B617DF20064821F /* IAPControllerTest.app */,
+				C161F7EB1B617DF20064821F /* Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C161F7ED1B617DF20064821F /* IAPControllerTest */ = {
+		C161F7ED1B617DF20064821F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C161F7F01B617DF20064821F /* AppDelegate.swift */,
 				C161F7EE1B617DF20064821F /* Supporting Files */,
+				C161F7F01B617DF20064821F /* AppDelegate.swift */,
 			);
-			path = IAPControllerTest;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C161F7EE1B617DF20064821F /* Supporting Files */ = {
@@ -84,15 +84,15 @@
 				C161F8101B617F1B0064821F /* IAPControllerProductIds.plist */,
 				C161F7EF1B617DF20064821F /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C161F7EA1B617DF20064821F /* IAPControllerTest */ = {
+		C161F7EA1B617DF20064821F /* Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C161F80A1B617DF20064821F /* Build configuration list for PBXNativeTarget "IAPControllerTest" */;
+			buildConfigurationList = C161F80A1B617DF20064821F /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				8A7347158501AB38D12F3A1B /* Check Pods Manifest.lock */,
 				C161F7E71B617DF20064821F /* Sources */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = IAPControllerTest;
+			name = Demo;
 			productName = IAPControllerTest;
-			productReference = C161F7EB1B617DF20064821F /* IAPControllerTest.app */;
+			productReference = C161F7EB1B617DF20064821F /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C161F7E61B617DF20064821F /* Build configuration list for PBXProject "IAPControllerTest" */;
+			buildConfigurationList = C161F7E61B617DF20064821F /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -137,7 +137,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C161F7EA1B617DF20064821F /* IAPControllerTest */,
+				C161F7EA1B617DF20064821F /* Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -298,10 +298,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6BCEBB902A90F466EBFAA2E /* Pods-IAPController.debug.xcconfig */;
 			buildSettings = {
-				INFOPLIST_FILE = IAPControllerTest/Info.plist;
+				INFOPLIST_FILE = "Classes/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = IAPControllerTest;
+				PRODUCT_NAME = Demo;
 			};
 			name = Debug;
 		};
@@ -309,17 +309,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 537A77345AE1589C6BEF8FFB /* Pods-IAPController.release.xcconfig */;
 			buildSettings = {
-				INFOPLIST_FILE = IAPControllerTest/Info.plist;
+				INFOPLIST_FILE = "Classes/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = IAPControllerTest;
+				PRODUCT_NAME = Demo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C161F7E61B617DF20064821F /* Build configuration list for PBXProject "IAPControllerTest" */ = {
+		C161F7E61B617DF20064821F /* Build configuration list for PBXProject "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C161F8081B617DF20064821F /* Debug */,
@@ -328,7 +328,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C161F80A1B617DF20064821F /* Build configuration list for PBXNativeTarget "IAPControllerTest" */ = {
+		C161F80A1B617DF20064821F /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C161F80B1B617DF20064821F /* Debug */,
