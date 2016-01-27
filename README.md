@@ -1,5 +1,6 @@
 ![](logo.png)
 
+[![](https://img.shields.io/badge/contact-@thematerik-blue.svg?style=flat-square)](http://twitter.com/thematerik)
 [![](https://img.shields.io/cocoapods/v/IAPController.svg?style=flat-square)](https://cocoapods.org/pods/IAPController)
 ![](https://img.shields.io/cocoapods/p/IAPController.svg?style=flat-square)
 ![](https://img.shields.io/cocoapods/l/IAPController.svg?style=flat-square)
