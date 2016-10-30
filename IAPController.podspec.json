@@ -1,6 +1,6 @@
 {
   "name": "IAPController",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "summary": "In App Purchase controller",
   "homepage": "https://github.com/materik/iapcontroller.git",
   "license": {
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/materik/iapcontroller.git",
-    "tag": "1.1.0"
+    "tag": "2.0.0"
   },
   "exclude_files": [
     "DemoSwift",

@@ -17,17 +17,17 @@ public extension SKProduct {
     
     public var priceFormatted: String? {
         get {
-            let priceFormatter = NSNumberFormatter()
-            priceFormatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
-            priceFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+            let priceFormatter = NumberFormatter()
+            priceFormatter.formatterBehavior = NumberFormatter.Behavior.behavior10_4
+            priceFormatter.numberStyle = NumberFormatter.Style.currency
             priceFormatter.locale = self.priceLocale
-            return priceFormatter.stringFromNumber(self.price)!
+            return priceFormatter.string(from: self.price)!
         }
     }
     
     public func buy() {
         if SKPaymentQueue.canMakePayments() {
-            SKPaymentQueue.defaultQueue().addPayment(self.payment)
+            SKPaymentQueue.default().add(self.payment)
         }
     }
     
